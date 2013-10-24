@@ -28,44 +28,17 @@
 	
 	<p>View our wide range of fabulous cars and low low prices, and quality. Ensure your car is only sold by a Boyd approved dealership.</p>
 	
-	<?php
-		$cars = array();
-		
-		foreach ($carData as $carUnit){
-			
-			$cars [] = new Car($carUnit["make"], $carUnit["model"], $carUnit["description"],$carUnit["price"],$carUnit["reg_number"], $carUnit["reg_year"]);
-			
-		}
-		
-		//this check if all data is added successfully to the cars array
-		//print_r($cars);
-		
-		$i = 1;
-		foreach($cars as $targetCar){
-			echo '<b>CAR NO </b>' .$i. '<br/>';
-			echo '<b>The Make of this car is</b>' .$targetCar->getMake().' <br/>';
-			echo '<b>The Model of this car is</b>' .$targetCar->getModel().' <br/>';
-			echo $targetCar->getDescription(). '<br/>';
-			echo '<b>The Price of this car is</b>' .$targetCar->getPrice().' <br/>';
-			echo '<b>The RegNumber of this car is</b>' .$targetCar->getRegNumber().' <br/>';
-			echo '<b>The RegYear of this car is</b>' .$targetCar->getRegYear().' <br/>';
-			echo '<b>The Age of the Car is </b>' .$targetCar->getCarAge().'<br/> <br/>';
-			
-			$i++;
-			
-
-			
-			
-			
-		}
-		
-		
 	
-	?>
 	
 	<!-- DO NOT USE THIS UNTIL PART 2 -->
 	<!-- when told to, remove these comments -->
-	<!--
+	
+	<?php
+		if (isset($_GET['colour'])){
+			echo $_GET['colour'];
+		}
+	?>
+	
 	<div class="row">
 		<p class="col-md-2">Car Colour</p>
 		<form action="cars.php" method="GET">
@@ -82,7 +55,7 @@
 		
 		<p><a href="cars.php" class="btn btn-primary btn-sm col-md-offset-1">Reset Colour</a></p>
 	</div>
-	-->
+	
 	<!-- /part 2 code -->
 	
 	
@@ -92,6 +65,40 @@
 		<!-- =========================== -->
 		<!-- PART 1 CAR LIST PLACEHOLDER -->
 		<!-- =========================== -->
+		<?php
+		
+		$cars = array();
+	
+		//this foreach loop through all the array in carData and using the information to
+		//create a new class of car adding it into the cars array which is created on the previous line
+		foreach ($carData as $carUnit){ 
+			
+			$cars [] = new Car($carUnit["make"], $carUnit["model"], $carUnit["description"],$carUnit["colour"],$carUnit["price"],$carUnit["reg_number"], $carUnit["reg_year"]);
+			
+		}
+		
+		//this check if all data is added successfully to the cars array
+		//print_r($cars);
+		
+		$i = 1;
+		foreach($cars as $targetCar){
+			echo '<b>CAR NO </b>' .$i. '<br/>';
+			echo '<b>The Make of this car is</b>' .$targetCar->getMake().' <br/>';
+			echo '<b>The Model of this car is</b>' .$targetCar->getModel().' <br/>';
+			echo '<b>The Colour of this car is </b>' .$targetCar->getColour(). '<br/>';
+			echo $targetCar->getDescription(). '<br/>';
+			echo '<b>The Price of this car is</b>' .$targetCar->getPrice().' <br/>';
+			echo '<b>The RegNumber of this car is</b>' .$targetCar->getRegNumber().' <br/>';
+			echo '<b>The RegYear of this car is</b>' .$targetCar->getRegYear().' <br/>';
+			echo '<b>The Age of the Car is </b>' .$targetCar->getCarAge().'<br/> <br/>';
+			
+			$i++;
+			
+		}
+		
+		
+	
+	?>
 		
 	</div><!-- /car list -->
 	

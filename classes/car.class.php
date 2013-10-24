@@ -10,6 +10,7 @@ This class create a car object.
             private $make; // car manufacturer
             private $model; // car model
             private $description; // description about this car
+            private $colour; // colour of the car
             private $price; // how much the car cost
             private $regNumber;//manufacture code?
             private $regYear;//regYear? manufacture year?
@@ -20,11 +21,12 @@ This class create a car object.
              *@param make,model,description,price,regNumber,regyear
              *@return
              */
-            public function __construct ($make , $model , $description , $price, $regNumber, $regYear){
+            public function __construct ($make , $model , $description, $colour ,$price, $regNumber, $regYear){
                 
                 $this->make = $make;
                 $this->model = $model;
                 $this->description = $description;
+                $this->colour=$colour;
                 $this->price = $price;
                 $this->regNumber = $regNumber;
                 $this->regYear = $regYear;                
@@ -74,6 +76,10 @@ This class create a car object.
              */
             public function getRegNumber(){
                 return $this->regNumber;
+            }
+            
+            public function getColour(){
+                return $this->colour;
             }
             
             /*
