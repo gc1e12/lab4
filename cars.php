@@ -34,8 +34,9 @@
 	<!-- when told to, remove these comments -->
 	
 	<?php
+		//check the url for colour
 		if (isset($_GET['colour'])){
-			echo $_GET['colour'];
+			$colour = $_GET['colour'];
 		}
 	?>
 	
@@ -60,7 +61,7 @@
 	
 	
 	<!-- car list -->
-	<div id="car-list" class="row">
+	<div id="car-list" >
 		
 		<!-- =========================== -->
 		<!-- PART 1 CAR LIST PLACEHOLDER -->
@@ -82,23 +83,43 @@
 		
 		$i = 1;
 		foreach($cars as $targetCar){
-			echo '<b>CAR NO </b>' .$i. '<br/>';
-			echo '<b>The Make of this car is</b>' .$targetCar->getMake().' <br/>';
-			echo '<b>The Model of this car is</b>' .$targetCar->getModel().' <br/>';
-			echo '<b>The Colour of this car is </b>' .$targetCar->getColour(). '<br/>';
-			echo $targetCar->getDescription(). '<br/>';
-			echo '<b>The Price of this car is</b>' .$targetCar->getPrice().' <br/>';
-			echo '<b>The RegNumber of this car is</b>' .$targetCar->getRegNumber().' <br/>';
-			echo '<b>The RegYear of this car is</b>' .$targetCar->getRegYear().' <br/>';
-			echo '<b>The Age of the Car is </b>' .$targetCar->getCarAge().'<br/> <br/>';
 			
-			$i++;
+			if (!empty($colour)){
+				
+				if($targetCar->getColour() == $colour){
+					echo '<b>CAR NO </b>' .$i. '<br/>';
+					echo '<b>The Make of this car is</b>' .$targetCar->getMake().' <br/>';
+					echo '<b>The Model of this car is</b>' .$targetCar->getModel().' <br/>';
+					echo '<b>The Colour of this car is </b>' .$targetCar->getColour(). '<br/>';
+					echo $targetCar->getDescription(). '<br/>';
+					echo '<b>The Price of this car is</b>' .$targetCar->getPrice().' <br/>';
+					echo '<b>The RegNumber of this car is</b>' .$targetCar->getRegNumber().' <br/>';
+					echo '<b>The RegYear of this car is</b>' .$targetCar->getRegYear().' <br/>';
+					echo '<b>The Age of the Car is </b>' .$targetCar->getCarAge().'<br/> <br/>';
+					
+					$i++;		
+				}else{
+					continue;
+				}
+			}else{
+				echo '<b>CAR NO </b>' .$i. '<br/>';
+				echo '<b>The Make of this car is</b>' .$targetCar->getMake().' <br/>';
+				echo '<b>The Model of this car is</b>' .$targetCar->getModel().' <br/>';
+				echo '<b>The Colour of this car is </b>' .$targetCar->getColour(). '<br/>';
+				echo $targetCar->getDescription(). '<br/>';
+				echo '<b>The Price of this car is</b>' .$targetCar->getPrice().' <br/>';
+				echo '<b>The RegNumber of this car is</b>' .$targetCar->getRegNumber().' <br/>';
+				echo '<b>The RegYear of this car is</b>' .$targetCar->getRegYear().' <br/>';
+				echo '<b>The Age of the Car is </b>' .$targetCar->getCarAge().'<br/> <br/>';
+					
+				$i++;
+			}
 			
 		}
 		
 		
 	
-	?>
+		?>
 		
 	</div><!-- /car list -->
 	
