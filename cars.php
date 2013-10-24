@@ -1,5 +1,6 @@
 <?php include('includes/header.php'); ?>
 <?php include('data/carData.php'); ?>
+<?php require('classes/car.class.php') ?>
 
 
 <!-- header -->
@@ -27,7 +28,40 @@
 	
 	<p>View our wide range of fabulous cars and low low prices, and quality. Ensure your car is only sold by a Boyd approved dealership.</p>
 	
+	<?php
+		$cars = array();
+		
+		foreach ($carData as $carUnit){
+			
+			$cars [] = new Car($carUnit["make"], $carUnit["model"], $carUnit["description"],$carUnit["price"],$carUnit["reg_number"], $carUnit["reg_year"]);
+			
+		}
+		
+		//this check if all data is added successfully to the cars array
+		//print_r($cars);
+		
+		$i = 1;
+		foreach($cars as $targetCar){
+			echo '<b>CAR NO </b>' .$i. '<br/>';
+			echo '<b>The Make of this car is</b>' .$targetCar->getMake().' <br/>';
+			echo '<b>The Model of this car is</b>' .$targetCar->getModel().' <br/>';
+			echo $targetCar->getDescription(). '<br/>';
+			echo '<b>The Price of this car is</b>' .$targetCar->getPrice().' <br/>';
+			echo '<b>The RegNumber of this car is</b>' .$targetCar->getRegNumber().' <br/>';
+			echo '<b>The RegYear of this car is</b>' .$targetCar->getRegYear().' <br/>';
+			echo '<b>The Age of the Car is </b>' .$targetCar->getCarAge().'<br/> <br/>';
+			
+			$i++;
+			
+
+			
+			
+			
+		}
+		
+		
 	
+	?>
 	
 	<!-- DO NOT USE THIS UNTIL PART 2 -->
 	<!-- when told to, remove these comments -->
